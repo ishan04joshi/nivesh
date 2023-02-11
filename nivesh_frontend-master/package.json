@@ -1,0 +1,45 @@
+{
+  "name": "mf-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^2.0.0",
+    "@chakra-ui/react": "^2.0.0",
+    "@choc-ui/paginator": "^3.4.0",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@fontsource/dm-serif-display": "^4.5.7",
+    "@fontsource/dm-serif-text": "^4.5.7",
+    "@fontsource/poppins": "^4.5.8",
+    "apexcharts": "^3.35.5",
+    "axios": "^0.27.2",
+    "chart.js": "^3.9.1",
+    "dayjs": "^1.11.2",
+    "framer-motion": "^6.3.3",
+    "html-react-parser": "^3.0.4",
+    "lottie-react": "^2.2.1",
+    "paytmchecksum": "^1.5.0",
+    "react": "^18.0.0",
+    "react-apexcharts": "^1.4.0",
+    "react-chartjs-2": "^4.3.1",
+    "react-dom": "^18.0.0",
+    "react-icons": "^4.3.1",
+    "react-lottie": "^1.2.3",
+    "react-quill": "^2.0.0",
+    "react-router-dom": "^6.3.0",
+    "recharts": "^2.1.14",
+    "use-debounce": "^8.0.2",
+    "zustand": "^4.0.0-rc.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@vitejs/plugin-react": "^1.3.0",
+    "vite": "^2.9.9"
+  }
+}

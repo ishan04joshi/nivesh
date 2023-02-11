@@ -1,0 +1,96 @@
+let paytmParams = {};
+    paytmParams.body = {
+      mid: process.env.PAYTM_MERCHANT_ID,
+      // websiteName: "NIVESH",
+      orderId: "ORDER_" + Date.now() + "-" + req.user._id.toString(),
+      // callbackUrl: "https://5c3d-103-68-219-242.ngrok.io/payment/success",
+      amount: fund.minimumInvestment,
+      businessType: "UPI_QR_CODE",
+      posId: "POS_ID_" + Date.now(),
+    };
+    // paytmParams.body = {
+    //   requestType: "Payment",
+    //   mid: process.env.PAYTM_MERCHANT_ID,
+    //   websiteName: "NIVESH",
+    //   orderId: "ORDER_" + Date.now() + "-" + req.user._id.toString(),
+    //   callbackUrl: "https://5c3d-103-68-219-242.ngrok.io/payment/success",
+    //   // callbackUrl: "https://0eab-103-68-219-242.ngrok.io/payment",
+    //   txnAmount: {
+    //     value: "1.00",
+    //     currency: "INR",
+    //   },
+    //   userInfo: {
+    //     custId: req.user._id.toString(),
+    //     mobileNo: req.user.phone,
+    //     email: req.user.email,
+    //     firstName: req.user.firstName,
+    //     lastName: req.user.lastName,
+    //   },
+    //   enablePaymentMode: [
+    //     {
+    //       mode: "PPBL",
+    //     },
+    //     {
+    //       mode: "BALANCE",
+    //     },
+    //     {
+    //       mode: "UPI",
+    //       channels: ["UPIPUSHEXPRESS"],
+    //     },
+    //     // {
+    //     //   mode: "DEBIT_CARD",
+    //     //   channels: ["VISA", "MASTER"],
+    //     // },
+    //     // {
+    //     //   mode: "CREDIT_CARD",
+    //     //   channels: ["VISA", "MASTER"],
+    //     // },
+    //   ],
+    // };
+    // let txnToken = null;
+    const checksum = await PaytmCheckSum.generateSignature(
+      JSON.stringify(paytmParams.body),
+      process.env.PAYTM_MERCHANT_KEY
+    );
+    paytmParams.head = {
+      signature: checksum,
+      version: "v1",
+      clientId: "C11",
+    };
+    const post_data = JSON.stringify(paytmParams);
+    const response = await axios.post(
+      `https://securegw-stage.paytm.in/paymentservices/qr/create`,
+      post_data,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Content-Length": post_data.length,
+        },
+        port: 443,
+      }
+    );
+    console.log(response.data, response.headers);
+
+    // const checksum = await PaytmCheckSum.generateSignature(
+    //   JSON.stringify(paytmParams.body),
+    //   process.env.PAYTM_MERCHANT_KEY
+    // );
+    // paytmParams.head = {
+    //   signature: checksum,
+    // };
+    // const post_data = JSON.stringify(paytmParams);
+    // const response = await axios.post(
+    //   `https://securegw-stage.paytm.in/theia/api/v1/initiateTransaction?mid=${process.env.PAYTM_MERCHANT_ID}&orderId=${paytmParams.body.orderId}`,
+    //   post_data,
+    //   {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       "Content-Length": post_data.length,
+    //     },
+    //     port: 443,
+    //   }
+    // );
+    // if (response.status === 200) {
+    //   console.log(response.data);
+    //   txnToken = response.data.body.txnToken;
+    // }
