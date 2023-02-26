@@ -480,7 +480,7 @@ router.post("/login", async (req, res) => {
         error: true,
         message: "User is Blocked or Rejected. Please Contact Admin.",
       });
-
+ 
     const otpDetails = await OTP.findOne({
       phone: user.phone,
       email: user.email,
