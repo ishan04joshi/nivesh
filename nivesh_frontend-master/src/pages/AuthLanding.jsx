@@ -104,7 +104,7 @@ export default function JoinOurTeam() {
         phone,
         phoneOtp,
         email,
-        emailOtp
+        emailOtp,
       );
       if (data.status) {
         toast({
@@ -136,8 +136,7 @@ export default function JoinOurTeam() {
       toast({
         title: "Error",
         description:
-          "Something Went Wrong! Please Contact Administrator. " +
-          error.message,
+         error?.message || error?.data?.message ||  "Something Went Wrong! Please Contact Administrator. ",
         status: "error",
         duration: 4000,
         isClosable: true,
@@ -145,7 +144,6 @@ export default function JoinOurTeam() {
       });
     }
   };
-
   return (
     <>
       <Header />

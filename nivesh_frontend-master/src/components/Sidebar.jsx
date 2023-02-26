@@ -379,19 +379,20 @@ export default function Swibc() {
           )}
         </Flex>
       </Stack>
-      <Stack spacing={1} pt={4}>
+      <Stack spacing={1} pt={5}>
         <Button
           variant="outline"
           w="fit-content"
           alignSelf="center"
           rightIcon={<MdLogout />}
-          color="whitesmoke"
+          color="white"
           _hover={{
+            color: "blue.900",
             bg: "red.500",
           }}
           onClick={handleLogout}
         >
-          Sign out
+          Sign Out
         </Button>
       </Stack>
     </Box>
