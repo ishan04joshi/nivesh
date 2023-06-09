@@ -353,8 +353,10 @@ export default function CallToActionWithVideo() {
     >
       <Stack spacing={8} maxWidth={["100%", "100%", "80%"]}>
         <Hero />
-        {/* <WhyInvestorsLovesUs /> */}
-        {loading ? (
+        {/* <FundsSection /> */}
+        <FaqSection />
+                {/* <WhyInvestorsLovesUs /> */}
+                {loading ? (
           <Spinner />
         ) : (
           <Box my={6}>
@@ -487,10 +489,7 @@ export default function CallToActionWithVideo() {
             </Carosuel>
           </Box>
         )}
-
-        {/* <FundsSection /> */}
         <Funds />
-        <FaqSection />
         <Stack pt={6} spacing={2}>
           <Heading color="gray.600" textAlign="center" fontSize="xl">
             Have More Questions?
@@ -499,6 +498,7 @@ export default function CallToActionWithVideo() {
             alignSelf={"center"}
             w="fit-content"
             variant="outline"
+            colorScheme="brand"
             color="blue.400"
             onClick={() => navigate("/contact")}
           >

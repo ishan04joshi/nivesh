@@ -106,7 +106,7 @@ export default function Footer() {
                 // w={"fit-content"}
               />
             </InputGroup>
-            <Button onClick={() => handleAddUserToNewsletter()} variant="outline" colorScheme="blue">
+            <Button onClick={() => handleAddUserToNewsletter()} variant="outline" colorScheme="brand" color="blue.400">
               Subscribe
             </Button>
           </Stack>
