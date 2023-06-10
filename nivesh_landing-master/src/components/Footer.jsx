@@ -27,10 +27,16 @@ export default function Footer() {
   const [email, setEmail] = useState("");
   const toast = useToast();
 
+  const validateInput = (value) => {
+    if(!value) return false;
+    const regex = /^(?:\+?\d{2}-?)?\d{10}|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regex.test(value);
+  };
+
   const handleAddUserToNewsletter = async () => {
-    if (!email) return toast({ title: "Please enter a valid email", status: "error" });
+    if(!validateInput(email)) return toast({ title: "Please enter a valid email", status: "error" });
     let body = {
-      email: email,
+      email
     };
     try {
       const { data } = await subscribeNewsletter(body);
@@ -43,7 +49,7 @@ export default function Footer() {
           isClosable: true,
           position: "bottom-right",
         });
-
+      setEmail("");
       return toast({
         title: "Success",
         description: data.message,
@@ -52,7 +58,6 @@ export default function Footer() {
         isClosable: true,
         position: "bottom-right",
       });
-      setEmail("");
     } catch (e) {
       console.log(e);
       toast({
@@ -98,6 +103,7 @@ export default function Footer() {
                 variant="outline"
                 type="text"
                 placeholder="Phone Number or Email"
+                value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 color="blue.400"
                 _placeholder={{

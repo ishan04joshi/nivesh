@@ -353,6 +353,7 @@ router.post("/login/send-otp", async (req, res) => {
 });
 // REGISTRATION VERIFY-OTP
 router.post("/register/verify-otp", genId, async (req, res) => {
+  console.log(req);
   const { phone, phoneOtp, email, emailOtp } = req.body;
   const validation = Joi.object({
     phone: Joi.number().required(),

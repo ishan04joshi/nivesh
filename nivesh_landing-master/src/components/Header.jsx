@@ -359,18 +359,6 @@ export default function Header() {
                 >
                   About
                 </Button>
-                <Button
-                  bg={bg}
-                  color="gray.500"
-                  display="inline-flex"
-                  alignItems="center"
-                  fontSize="md"
-                  _hover={{ color: cl }}
-                  _focus={{ boxShadow: "none" }}
-                  onClick={() => navigate("/contact")}
-                >
-                  Contact
-                </Button>
               </HStack>
             </Flex>
             <Flex justify="flex-end" align="center" color="gray.400">
