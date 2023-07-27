@@ -453,7 +453,7 @@ router.post("/login", async (req, res) => {
   const validation = Joi.object({
     id: Joi.string().required(),
     pin: Joi.number().required(),
-    otp: Joi.number().required(),
+    otp: Joi.number().optional(),
   });
   const { error } = validation.validate({
     id,
@@ -481,22 +481,24 @@ router.post("/login", async (req, res) => {
         message: "User is Blocked or Rejected. Please Contact Admin.",
       });
  
-    const otpDetails = await OTP.findOne({
-      phone: user.phone,
-      email: user.email,
-    });
-    if (!otpDetails)
-      return res.status(200).json({
-        status: false,
-        error: true,
-        message: "Invalid Request. OTP not generated for this User.",
+    if(otp){
+      const otpDetails = await OTP.findOne({
+        phone: user.phone,
+        email: user.email,
       });
-    if (otpDetails.phoneOtp !== parseInt(otp))
-      return res.status(200).json({
-        status: false,
-        error: true,
-        message: "Invalid  OTP Provided.",
-      });
+      if (!otpDetails)
+        return res.status(200).json({
+          status: false,
+          error: true,
+          message: "Invalid Request. OTP not generated for this User.",
+        });
+      if (otpDetails.phoneOtp !== parseInt(otp))
+        return res.status(200).json({
+          status: false,
+          error: true,
+          message: "Invalid  OTP Provided.",
+        });
+    }
     const isMatch = pin.toString() === user.pin.toString();
     console.log(isMatch);
     if (!isMatch)
@@ -507,7 +509,9 @@ router.post("/login", async (req, res) => {
       });
 
     await assignCookies(req, res, user._id);
-    await OTP.deleteOne({ phone: user.phone, email: user.email });
+    if(otp){
+      await OTP.deleteOne({ phone: user.phone, email: user.email });
+    }
     const userDetailsWithoutPin = await User.findOne({
       id,
       status: { $ne: "rejected" },

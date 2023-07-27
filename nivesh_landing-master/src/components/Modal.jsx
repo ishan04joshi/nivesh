@@ -42,7 +42,7 @@ const ModalPopup = (props) => {
       {trigger}
       </Button>
       <motion.div initial="hidden" animate={isOpen ? "visible" : "hidden"} variants={modalVariants}>
-        <Modal isOpen={isOpen} onClose={handleModalClose} isCentered size='full'
+        <Modal isOpen={isOpen} onClose={handleModalClose} isCentered size='lg'
         scrollBehavior={'inside'}>
             <ModalOverlay />
             <ModalContent>
