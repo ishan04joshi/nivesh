@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
+    "build:digitalocean": "npm install --production=false && npm run build && npm ci",
     "build": "vite build",
     "preview": "vite preview"
   },
