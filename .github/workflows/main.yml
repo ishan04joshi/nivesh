@@ -22,12 +22,12 @@ jobs:
          cd /nivesh_landing_master
          yarn install
          yarn build --if-present
-    -  name: Publish
-    -  uses: nogsantos/scp-deploy@master
-       with:
-          src: ./dist/*
-          host: ${{ secrets.SSH_HOST }}
-          remote: ${{ secrets.SSH_DIR }}
-          port: ${{ secrets.SSH_PORT }}
-          user: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
+    # -  name: Publish
+    # -  uses: nogsantos/scp-deploy@master
+    #    with:
+    #       src: ./dist/*
+    #       host: ${{ secrets.SSH_HOST }}
+    #       remote: ${{ secrets.SSH_DIR }}
+    #       port: ${{ secrets.SSH_PORT }}
+    #       user: ${{ secrets.SSH_USER }}
+    #       key: ${{ secrets.SSH_KEY }}
