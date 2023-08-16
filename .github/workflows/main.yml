@@ -23,7 +23,6 @@ jobs:
          cache: 'yarn'
     -  name: yarn install, build and deploy
        run: |
-         npm install -g yarn
          yarn install
          yarn build --if-present
     # -  name: Publish
