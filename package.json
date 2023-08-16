@@ -1,0 +1,15 @@
+{
+  "name": "nivesh",
+  "version": "1.0.0",
+  "description": "niveshkro.com website.",
+  "main": "''",
+  "devDependencies": {},
+  "scripts": {
+    "start": "concurrently \"cd nivesh_landing-master && npm run dev\"  \"cd nivesh_frontend-master && npm run dev\"  \"cd nivesh_backend-master && npm start\""
+  },
+  "dependencies": {
+    "concurrently": "8.2.0"
+  },
+  "author": "",
+  "license": "ISC"
+}

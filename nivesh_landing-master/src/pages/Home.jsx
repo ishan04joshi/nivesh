@@ -39,6 +39,8 @@ import { AiOutlineStock } from "react-icons/ai";
 import Card from "./Card";
 import Funds from "./Funds";
 import Hero from "../components/Hero";
+import ModalPopup from "../components/Modal";
+import Contact from '../pages/Contact';
 import Lottie from "lottie-react";
 import { MdRateReview } from "react-icons/md";
 import { RiExchangeDollarFill } from "react-icons/ri";
@@ -353,8 +355,10 @@ export default function CallToActionWithVideo() {
     >
       <Stack spacing={8} maxWidth={["100%", "100%", "80%"]}>
         <Hero />
-        {/* <WhyInvestorsLovesUs /> */}
-        {loading ? (
+        {/* <FundsSection /> */}
+        <FaqSection />
+                {/* <WhyInvestorsLovesUs /> */}
+                {loading ? (
           <Spinner />
         ) : (
           <Box my={6}>
@@ -487,23 +491,12 @@ export default function CallToActionWithVideo() {
             </Carosuel>
           </Box>
         )}
-
-        {/* <FundsSection /> */}
         <Funds />
-        <FaqSection />
         <Stack pt={6} spacing={2}>
           <Heading color="gray.600" textAlign="center" fontSize="xl">
             Have More Questions?
           </Heading>
-          <Button
-            alignSelf={"center"}
-            w="fit-content"
-            variant="outline"
-            color="blue.400"
-            onClick={() => navigate("/contact")}
-          >
-            CONTACT US
-          </Button>
+          <ModalPopup trigger={"CONTACT US"} header={"Contact Us"} content={<Contact />}/>
         </Stack>
       </Stack>
     </Box>

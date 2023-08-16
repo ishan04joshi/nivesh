@@ -100,12 +100,15 @@ export default function JoinOurTeam() {
       });
     setLoading(true);
     try {
-      const { data } = await verifyRegisterOtp(
+      const response = await verifyRegisterOtp(
         phone,
         phoneOtp,
         email,
-        emailOtp
+        emailOtp,
       );
+      if(!response)
+        throw new Error("Something went wrong !!!")
+      const { data } = response;
       if (data.status) {
         toast({
           title: "OTP verified successfully",
@@ -136,8 +139,7 @@ export default function JoinOurTeam() {
       toast({
         title: "Error",
         description:
-          "Something Went Wrong! Please Contact Administrator. " +
-          error.message,
+         error?.message || error?.data?.message ||  "Something Went Wrong! Please Contact Administrator. ",
         status: "error",
         duration: 4000,
         isClosable: true,
@@ -145,7 +147,6 @@ export default function JoinOurTeam() {
       });
     }
   };
-
   return (
     <>
       <Header />

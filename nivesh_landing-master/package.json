@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
+    "build:digitalocean": "npm install --production=false && npm run build && npm ci",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -31,6 +32,11 @@
     "react-simple-typewriter": "^5.0.1",
     "recharts": "^2.1.15",
     "zustand": "^4.1.1"
+  },
+  "overrides":{
+    "react-lottie": {
+      "react": "^0.14.7 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0" 
+    }
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
