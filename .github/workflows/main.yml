@@ -21,6 +21,7 @@ jobs:
        with:
          node-version: '14'
          cache: 'yarn'
+    -  uses: mskelton/setup-yarn@v1
     -  name: yarn install, build and deploy
        run: |
          yarn install
