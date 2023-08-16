@@ -263,7 +263,7 @@ export default function Swibc() {
                 color={useColorModeValue("gray.100", "gray.300")}
                 onClick={() => navigate("/dashboard")}
               >
-                Dashboard
+                Invested Funds
               </NavItem>
               <NavItem
                 icon={HiCurrencyDollar}

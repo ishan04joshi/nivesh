@@ -17,7 +17,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { dashboardURL, websiteURL } from "../env";
-import { requestPin, sendLoginOtp, verifyLoginOtp } from "../api/apis";
+import { requestPin, sendLoginOtp, verifyLogin } from "../api/apis";
 
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -36,56 +36,56 @@ export default function SimpleCard() {
   const [showOtpBox, setShowOtpBox] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleSendLoginOtp = async () => {
-    if (!id || !pin)
-      return toast({
-        title: "Missing Details",
-        description: "Please Fill in User ID & Password.",
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-        position: "bottom-right",
-      });
-    setLoading(true);
-    try {
-      const { data } = await sendLoginOtp(id, pin);
-      setLoading(false);
-      if (data.error)
-        return toast({
-          title: "Error",
-          description: data.message,
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-          position: "bottom-right",
-        });
-      setShowOtpBox(true);
-      toast({
-        title: "OTP Sent",
-        description: "Please check your mobile for OTP.",
-        status: "success",
-        duration: 3000,
-        isClosable: true,
-        position: "bottom-right",
-      });
-    } catch (e) {
-      setLoading(false);
-      toast({
-        title: "Error",
-        description: e.message,
-        status: "error",
-        duration: 9000,
-        isClosable: true,
-        position: "bottom-right",
-      });
-    }
-  };
+  // const handleSendLoginOtp = async () => {
+  //   if (!id || !pin)
+  //     return toast({
+  //       title: "Missing Details",
+  //       description: "Please Fill in User ID & Password.",
+  //       status: "error",
+  //       duration: 3000,
+  //       isClosable: true,
+  //       position: "bottom-right",
+  //     });
+  //   setLoading(true);
+  //   try {
+  //     const { data } = await sendLoginOtp(id, pin);
+  //     setLoading(false);
+  //     if (data.error)
+  //       return toast({
+  //         title: "Error",
+  //         description: data.message,
+  //         status: "error",
+  //         duration: 3000,
+  //         isClosable: true,
+  //         position: "bottom-right",
+  //       });
+  //     setShowOtpBox(true);
+  //     toast({
+  //       title: "OTP Sent",
+  //       description: "Please check your mobile for OTP.",
+  //       status: "success",
+  //       duration: 3000,
+  //       isClosable: true,
+  //       position: "bottom-right",
+  //     });
+  //   } catch (e) {
+  //     setLoading(false);
+  //     toast({
+  //       title: "Error",
+  //       description: e.message,
+  //       status: "error",
+  //       duration: 9000,
+  //       isClosable: true,
+  //       position: "bottom-right",
+  //     });
+  //   }
+  // };
 
   const handleLogin = async () => {
-    if (!id || !pin || !otp)
+    if (!id || !pin )
       return toast({
         title: "Error",
-        description: "Please enter your User ID, PIN, OTP.",
+        description: "Please enter your User ID, PIN.",
         status: "error",
         duration: 3000,
         isClosable: true,
@@ -93,12 +93,12 @@ export default function SimpleCard() {
       });
     setLoading(true);
     try {
-      const { data } = await verifyLoginOtp(id, pin, otp);
+      const { data } = await verifyLogin(id, pin);
       if (data.status) {
         setSessionExpired(false);
         console.log(data.data);
         setUser(data.data);
-        navigate("/");
+        navigate("/dashboard");
       }
       if (!data.status)
         toast({
@@ -251,7 +251,7 @@ export default function SimpleCard() {
                   spacing={2}
                   justifyContent="space-around"
                 >
-                  <Button
+                  {/* <Button
                     bg={"blue.400"}
                     color={"white"}
                     _hover={{
@@ -262,8 +262,8 @@ export default function SimpleCard() {
                     isLoading={loading}
                   >
                     SEND OTP
-                  </Button>
-                  {showOtpBox && (
+                  </Button> */}
+
                     <Button
                       bg={"blue.400"}
                       color={"white"}
@@ -276,7 +276,6 @@ export default function SimpleCard() {
                     >
                       SIGN IN
                     </Button>
-                  )}
                 </Stack>
 
                 <Button

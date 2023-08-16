@@ -196,10 +196,6 @@ const InitialBuy = () => {
 
   return (
     <Stack spacing={3}>
-      <Alert status="info" w="fit-content">
-        <AlertIcon />
-        2% Processing Fees will be added.
-      </Alert>
       <Text>Buying...</Text>
       <Stack spacing={4} mt={10} border="1px" borderRadius={"md"} p={3}>
         <Stack direction="row" justifyContent="space-between">
@@ -227,8 +223,10 @@ const InitialBuy = () => {
         </RadioGroup>
       </Stack>
       <Stack direction="row" spacing={5} mt={8}>
-        <Text>Purchase Amount:</Text>
-        <Text>₹</Text>
+        <Stack direction="column">
+          <Text>{`Purchase Amount (₹):`}</Text>
+          <Text>(in multiple of min investment amount)</Text>
+        </Stack>
         <Input
           type="number"
           placeholder="Enter Amount"

@@ -43,7 +43,7 @@ export const updateUserProfile = async (body) =>
 export const sendLoginOtp = async (id, pin) =>
   API.post("/login/send-otp", { id, pin });
 
-export const verifyLoginOtp = async (id, pin, otp) =>
+export const verifyLogin = async (id, pin, otp) =>
   API.post("/login", { id, pin, otp });
 
 export const getUsers = async (page, size) =>

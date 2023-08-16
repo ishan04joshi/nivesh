@@ -286,7 +286,7 @@ export default function Header() {
     </VStack>
   );
   return (
-    <Box>
+    <Box position={"sticky"} top={"0"} zIndex={"999"}>
       <chakra.header
         ref={ref}
         shadow={y > height ? "sm" : undefined}
@@ -308,7 +308,11 @@ export default function Header() {
             justifyContent="space-between"
           >
             <Flex align="flex-start">
-              <Link href="/">
+              <Link href="/" sx={{
+                  _hover: {
+                    textDecoration: "none",
+                  },
+                }}>
                 <HStack>
                   <Heading as="h1" size="lg">
                     niveshkro
@@ -355,18 +359,6 @@ export default function Header() {
                 >
                   About
                 </Button>
-                <Button
-                  bg={bg}
-                  color="gray.500"
-                  display="inline-flex"
-                  alignItems="center"
-                  fontSize="md"
-                  _hover={{ color: cl }}
-                  _focus={{ boxShadow: "none" }}
-                  onClick={() => navigate("/contact")}
-                >
-                  Contact
-                </Button>
               </HStack>
             </Flex>
             <Flex justify="flex-end" align="center" color="gray.400">
@@ -374,6 +366,7 @@ export default function Header() {
                 colorScheme="brand"
                 variant="outline"
                 size="sm"
+                color="blue.400"
                 onClick={() => window.open(PORTAL_URL)}
               >
                 Goto your Dashboard

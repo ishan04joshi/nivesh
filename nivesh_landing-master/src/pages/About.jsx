@@ -1,13 +1,14 @@
 import { Button, Container, Flex, Heading, Icon, Stack, Text } from "@chakra-ui/react";
-
 import AboutLottie from "../assets/lottie/about.json";
 import { FaLowVision } from "react-icons/fa";
 import { GiRopeDart } from "react-icons/gi";
 import { Illustration } from "../components/Illustration";
+import ModalPopup from '../components/Modal';
 import Lottie from "lottie-react";
 import { motion } from "framer-motion";
 import { pageTransitions } from "../utils/pageTransitions";
 import { useNavigate } from "react-router-dom";
+import Contact from '../pages/Contact';
 
 const metrics = [
   {
@@ -77,9 +78,7 @@ export default function CallToActionWithIllustration() {
           <Button rounded={"full"} px={6} colorScheme={"red"} bg={"red.400"} _hover={{ bg: "red.700" }} onClick={() => navigate("/")}>
             Get started
           </Button>
-          <Button rounded={"full"} px={6} onClick={() => navigate("/contact")} variant="outline">
-            Contact us
-          </Button>
+          <ModalPopup trigger={"Contact us"} header={"Contact Us"} content={<Contact />}/>
         </Stack>
       </Stack>
     </MotionContainer>

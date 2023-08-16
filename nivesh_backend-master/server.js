@@ -6,6 +6,7 @@ const morgan = require("morgan");
 require("dotenv").config();
 const path = require("path");
 const PORT = process.env.PORT || 8012;
+console.log(process.env);
 const { verifyToken } = require("./middlewares/tokenVerification");
 const { connectDB } = require("./init_mongodb");
 const { createFolders } = require("./helpers/index");
