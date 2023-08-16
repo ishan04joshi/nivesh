@@ -11,6 +11,9 @@ jobs:
   deploy:
     name: yarn install, build and deploy
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./nivesh_landing-master
     steps:
     -  uses: actions/checkout@v3
     -  name: Use nodejs latest version
@@ -19,7 +22,7 @@ jobs:
          node-version: '14'
     -  name: yarn install, build and deploy
        run: |
-         cd ./nivesh_landing-master
+         npm install -g yarn
          yarn install
          yarn build --if-present
     # -  name: Publish
