@@ -277,7 +277,7 @@ const PackageManager = () => {
               onClick={() => setMode("update")}
               alignSelf="center"
             >
-              Update Funds
+              Back to Funds
             </Button>
           ) : (
             <Button
@@ -836,6 +836,7 @@ const PackageManager = () => {
                     display="none"
                     aria-hidden="true"
                     accept=".csv"
+                    variant="filled"
                     type="file"
                     onChange={(e) => {
                       if (e.target.files.length > 0) {

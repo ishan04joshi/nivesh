@@ -10,6 +10,6 @@
 
 // !! DEVELOPMENT
 
-export const WEBSITE_URL = "http://localhost:3001";
-export const PORTAL_URL = "http://localhost:3000";
+export const WEBSITE_URL = "http://localhost:3000";
+export const PORTAL_URL = "http://localhost:3001/signin";
 export const backendURL = "http://localhost:8012";

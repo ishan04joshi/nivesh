@@ -61,13 +61,13 @@ export default function CallToActionWithVideo() {
             }}
             lineHeight={0.9}
           >
-            There is no way to save money than investment
+            We provide{" "}
           </Heading>
           <Heading lineHeight={1.1} fontWeight={600} fontSize="4xl">
             <br />
-            <Text as={"span"} color={"red.400"}>
+            {/* <Text as={"span"} color={"red.400"}>
               We provide{" "}
-            </Text>
+            </Text> */}
             professionally managed portfolio for investment
           </Heading>
           <Box>

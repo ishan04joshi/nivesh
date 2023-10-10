@@ -85,7 +85,7 @@ function UserDashboard() {
             color="white"
           >
             <Text fontWeight="bold" fontSize="sm" color="whiteAlpha.700">
-              Total Market Value
+              Current Value
             </Text>
             <Heading textAlign={"center"} fontSize="3xl" noOfLines={1}>
               {toIndianCurrency(totalUserData?.totalMarketValue)}
@@ -164,8 +164,8 @@ function UserDashboard() {
               <Th>Fund Name</Th>
               <Th>Current Value</Th>
               <Th>Invested Value</Th>
-              <Th>Returns(₹)</Th>
-              <Th>Returns(%)</Th>
+              <Th>Total P&L (₹)</Th>
+              <Th>Total P&L (%)</Th>
               <Th>Actions</Th>
             </Tr>
           </Thead>
