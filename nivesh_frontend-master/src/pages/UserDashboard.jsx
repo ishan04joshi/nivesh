@@ -164,8 +164,8 @@ function UserDashboard() {
               <Th>Fund Name</Th>
               <Th>Current Value</Th>
               <Th>Invested Value</Th>
-              <Th>Returns(₹)</Th>
-              <Th>Returns(%)</Th>
+              <Th>Total P&L (₹)</Th>
+              <Th>Total P&L (%)</Th>
               <Th>Actions</Th>
             </Tr>
           </Thead>
